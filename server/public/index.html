@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAW OFFICES OF WEI & ASSOCIATES PLLC - 移民法律服务</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-content">
+                <h1>LAW OFFICES OF WEI & ASSOCIATES PLLC</h1>
+                <div class="nav-links">
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于我们</a>
+                    <a href="services.html">服务范围</a>
+                    <a href="contact.html">联系我们</a>
+                    <a href="login.html" class="login-button">客户登录</a>
+                    <a href="/admin" class="login-button" style="margin-left: 10px;">律师登录</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>专业的移民法律服务</h2>
+            <p>为您提供全方位的移民法律解决方案</p>
+            <a href="#consultation" class="cta-button">预约咨询</a>
+        </section>
+
+        <section class="services-preview">
+            <h3>我们的服务</h3>
+            <div class="service-cards">
+                <div class="service-card">
+                    <h4>DIY申请审查</h4>
+                    <p>专业律师审查您的DIY申请材料，确保申请质量</p>
+                    <a href="services.html#diy-review" class="price-button">$299起</a>
+                </div>
+                <div class="service-card">
+                    <h4>全程代理服务</h4>
+                    <p>从材料准备到递交全程专业指导</p>
+                    <a href="services.html#full-service" class="price-button">详询</a>
+                </div>
+                <div class="service-card">
+                    <h4>加急咨询服务</h4>
+                    <p>紧急情况下的快速响应和处理</p>
+                    <a href="services.html#urgent" class="price-button">$199/次</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="consultation" class="consultation-form">
+            <h3>预约咨询</h3>
+            <form id="consultationForm">
+                <div class="form-group">
+                    <label for="name">姓名</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">邮箱</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">电话</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="serviceType">咨询类型</label>
+                    <select id="serviceType" name="serviceType" required>
+                        <option value="">请选择服务类型</option>
+                        <option value="diy-review">DIY申请审查</option>
+                        <option value="full-service">全程代理服务</option>
+                        <option value="urgent">加急咨询</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">咨询内容</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+
+                <button type="submit">提交预约</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>联系方式</h4>
+                <p>电话：(123) 456-7890</p>
+                <p>邮箱：contact@weilawoffices.com</p>
+                <p>地址：New York, NY 10001</p>
+            </div>
+            <div class="footer-section">
+                <h4>工作时间</h4>
+                <p>周一至周五：9:00 AM - 6:00 PM</p>
+                <p>周六：预约服务</p>
+                <p>周日：休息</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 LAW OFFICES OF WEI & ASSOCIATES PLLC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
