@@ -4,9 +4,35 @@
 这是魏律师移民法律服务的网站源代码，包括客户前台和律师后台系统。
 
 ## 文件结构
-- 客户端页面：直接位于根目录下的HTML文件
 - 服务器端：位于server目录
 - 静态资源：位于server/public目录
+
+## 项目设置指南
+
+### 1. 克隆仓库
+```
+git clone https://github.com/wjkwmok/immigration-site.git
+cd immigration-site
+```
+
+### 2. 安装依赖
+```
+cd server
+npm install
+```
+
+### 3. 设置环境变量
+将 `server/.env.example` 复制为 `server/.env` 并填写相应的值：
+```
+cp .env.example .env
+```
+编辑 `.env` 文件，填写MongoDB连接信息和其他配置。
+
+### 4. 启动服务器
+```
+npm start
+```
+服务器默认运行在3000端口。访问 http://localhost:3000 即可打开网站。
 
 ## 登录信息
 
@@ -18,14 +44,6 @@
 ### 客户登录
 - 路径：/login.html
 - 用户可以在注册页面注册后登录
-
-## 启动服务器
-在server目录下执行以下命令：
-```
-npm start
-```
-
-服务器默认运行在5000端口。访问 http://localhost:5000 即可打开网站。
 
 ## 注意事项
 1. 登录路径正确
