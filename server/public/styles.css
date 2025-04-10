@@ -192,3 +192,37 @@ footer {
         gap: 1rem;
     }
 }
+
+.firm-name-container {
+    /* Styles for the container */
+    text-align: left; /* Align text inside to the left */
+}
+
+.firm-name-container h1,
+.firm-name-container h2 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2; /* Adjust as needed */
+}
+
+.firm-name-container h1 {
+    font-size: 1.5rem; /* Or your desired size */
+}
+
+.firm-name-container h2 {
+    font-size: 1.1rem; /* Or your desired size */
+    margin-top: 2px; /* Small space between lines */
+}
+
+/* Remove or comment out the previous complex rules */
+/*
+.nav-content h1, .nav-content h2 {
+    ...
+}
+.nav-content h1 {
+    ...
+}
+.nav-content h2 {
+    ...
+}
+*/
