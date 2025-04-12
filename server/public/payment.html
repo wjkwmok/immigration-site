@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>律师咨询费用支付 - Wei Law Offices</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="script.js"></script>
+    <style>
+        .payment-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .card-element {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        
+        .error-message {
+            color: #d93025;
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .success-message {
+            color: #0f9d58;
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .payment-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .payment-option {
+            flex: 1;
+            min-width: 120px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-option.selected {
+            border-color: #3f51b5;
+            background-color: #f0f4ff;
+        }
+        
+        .payment-option h3 {
+            margin-top: 0;
+        }
+        
+        .payment-btn {
+            background-color: #3f51b5;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .payment-btn:hover {
+            background-color: #303f9f;
+        }
+        
+        .payment-btn:disabled {
+            background-color: #9e9e9e;
+            cursor: not-allowed;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 0.5rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-content">
+                <div class="firm-name-container">
+                    <h1>魏纪堃律师事务所</h1>
+                    <h2 style="margin-top: 0;">LAW OFFICES OF WEI & ASSOCIATES PLLC</h2>
+                </div>
+                <button class="hamburger-button" id="hamburgerButton" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于我们</a>
+                    <a href="services.html">服务范围</a>
+                    <a href="contact.html">联系我们</a>
+                    <a href="video-consultation.html">视频咨询</a>
+                    <a href="login.html" class="login-button">客户登录</a>
+                    <a href="/admin" class="login-button">律师登录</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>律师咨询费用支付</h1>
+                <p>安全便捷地支付您的法律咨询费用</p>
+            </div>
+        </section>
+        
+        <section class="payment-container">
+            <h2>选择咨询服务</h2>
+            
+            <div class="payment-options">
+                <div class="payment-option" data-amount="100" data-description="基础咨询服务 (30分钟)">
+                    <h3>基础咨询</h3>
+                    <p>30分钟电话/视频咨询</p>
+                    <p class="price">$100</p>
+                </div>
+                <div class="payment-option" data-amount="200" data-description="标准咨询服务 (60分钟)">
+                    <h3>标准咨询</h3>
+                    <p>60分钟电话/视频咨询</p>
+                    <p class="price">$200</p>
+                </div>
+                <div class="payment-option" data-amount="350" data-description="深度咨询服务 (90分钟)">
+                    <h3>深度咨询</h3>
+                    <p>90分钟电话/视频咨询 + 书面建议</p>
+                    <p class="price">$350</p>
+                </div>
+            </div>
+            
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="name">姓名</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">电子邮箱</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">电话号码</label>
+                    <input type="tel" id="phone" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="card-element">信用卡或借记卡</label>
+                    <div id="card-element" class="card-element"></div>
+                    <div id="card-errors" class="error-message" role="alert"></div>
+                </div>
+                
+                <button type="submit" id="submit-button" class="payment-btn" disabled>
+                    <span id="button-text">请先选择咨询服务</span>
+                    <span id="spinner" class="spinner" style="display: none;"></span>
+                </button>
+                
+                <div id="payment-message" class="success-message" style="display: none;"></div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>联系方式</h4>
+                <p>电话：718-880-8820</p>
+                <p>邮箱：jikun.wei@jikunlaw.com</p>
+                <p>地址：43 West 43rd Street, Suite 058, New York, NY 10036</p>
+            </div>
+            <div class="footer-section">
+                <h4>工作时间</h4>
+                <p>周一至周五：9:00 AM - 6:00 PM</p>
+                <p>周六：预约服务</p>
+                <p>周日：休息</p>
+            </div>
+            <div class="footer-section">
+                <h4>微信咨询</h4>
+                <img src="images/law-firm-wechat.png" alt="律所微信二维码" class="footer-wechat-qr" style="width: 100px; height: auto;">
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 LAW OFFICES OF WEI & ASSOCIATES PLLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有支付选项元素和支付按钮
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            const submitButton = document.getElementById('submit-button');
+            const buttonText = document.getElementById('button-text');
+            
+            // 保存选择的服务信息
+            let selectedOption = null;
+            
+            // 为每个支付选项添加点击事件
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // 移除其他选项的选中状态
+                    paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // 选中当前点击的选项
+                    this.classList.add('selected');
+                    
+                    // 更新所选服务信息
+                    selectedOption = {
+                        amount: this.getAttribute('data-amount'),
+                        description: this.getAttribute('data-description')
+                    };
+                    
+                    // 更新按钮文本和状态
+                    buttonText.textContent = `支付 $${selectedOption.amount}`;
+                    submitButton.disabled = false;
+                });
+            });
+            
+            // ... 剩余的Stripe支付处理代码 ...
+        });
+    </script>
+</body>
+</html>
