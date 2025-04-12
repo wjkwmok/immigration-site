@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移民法律博客 - Wei Law Offices</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../script.js"></script>
+    <style>
+        .blog-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .blog-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            background: white;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-title {
+            font-size: 1.25rem;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-date {
+            color: #666;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-excerpt {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: #3f51b5;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        .blog-categories {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .category-button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .category-button:hover, .category-button.active {
+            background-color: #3f51b5;
+            color: white;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .pagination-button {
+            padding: 0.5rem 1rem;
+            margin: 0 0.25rem;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .pagination-button.active {
+            background-color: #3f51b5;
+            color: white;
+        }
+        
+        .pagination-button:hover:not(.active) {
+            background-color: #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-content">
+                <div class="firm-name-container">
+                    <h1>魏纪堃律师事务所</h1>
+                    <h2 style="margin-top: 0;">LAW OFFICES OF WEI & ASSOCIATES PLLC</h2>
+                </div>
+                <button class="hamburger-button" id="hamburgerButton" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="nav-links" id="navLinks">
+                    <a href="../index.html">首页</a>
+                    <a href="../about.html">关于我们</a>
+                    <a href="../services.html">服务范围</a>
+                    <a href="../contact.html">联系我们</a>
+                    <a href="../video-consultation.html">视频咨询</a>
+                    <a href="../login.html" class="login-button">客户登录</a>
+                    <a href="/admin" class="login-button">律师登录</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>移民法律博客</h1>
+                <p>了解最新的移民政策和法律资讯</p>
+            </div>
+        </section>
+        
+        <div class="blog-container">
+            <div class="blog-categories">
+                <a href="#" class="category-button active">全部文章</a>
+                <a href="#" class="category-button">家庭移民</a>
+                <a href="#" class="category-button">工作移民</a>
+                <a href="#" class="category-button">投资移民</a>
+                <a href="#" class="category-button">公民入籍</a>
+                <a href="#" class="category-button">移民法动态</a>
+            </div>
+            
+            <div class="blog-grid">
+                <!-- 博客文章1 -->
+                <div class="blog-card">
+                    <img src="../images/blog-family-immigration.jpg" alt="家庭移民" class="blog-image">
+                    <div class="blog-content">
+                        <h3 class="blog-title">家庭移民申请流程详解</h3>
+                        <p class="blog-date">2024年4月10日</p>
+                        <p class="blog-excerpt">家庭移民是美国移民系统的重要组成部分，允许美国公民和永久居民为其亲属申请移民。本文详细介绍申请流程和所需文件。</p>
+                        <a href="family-immigration-process.html" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                
+                <!-- 博客文章2 -->
+                <div class="blog-card">
+                    <img src="../images/blog-h1b-visa.jpg" alt="H-1B签证" class="blog-image">
+                    <div class="blog-content">
+                        <h3 class="blog-title">2024年H-1B签证抽签变化</h3>
+                        <p class="blog-date">2024年3月15日</p>
+                        <p class="blog-excerpt">美国移民局对2024财年H-1B签证抽签流程进行了重大调整。了解这些变化如何影响您的申请策略和成功率。</p>
+                        <a href="h1b-visa-changes-2024.html" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                
+                <!-- 博客文章3 -->
+                <div class="blog-card">
+                    <img src="../images/blog-citizenship.jpg" alt="公民入籍" class="blog-image">
+                    <div class="blog-content">
+                        <h3 class="blog-title">美国公民入籍考试指南</h3>
+                        <p class="blog-date">2024年2月28日</p>
+                        <p class="blog-excerpt">准备入籍考试？本指南提供全面的入籍考试准备资源，包括常见问题、学习材料和面试技巧。</p>
+                        <a href="citizenship-exam-guide.html" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                
+                <!-- 博客文章4 -->
+                <div class="blog-card">
+                    <img src="../images/blog-eb5-visa.jpg" alt="EB-5投资移民" class="blog-image">
+                    <div class="blog-content">
+                        <h3 class="blog-title">EB-5投资移民项目更新</h3>
+                        <p class="blog-date">2024年2月10日</p>
+                        <p class="blog-excerpt">EB-5投资移民计划又出现了新的政策变化。本文解析最新规定及其对投资者的影响，以及选择投资项目的关键考虑因素。</p>
+                        <a href="eb5-program-updates.html" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                
+                <!-- 博客文章5 -->
+                <div class="blog-card">
+                    <img src="../images/blog-immigration-policy.jpg" alt="移民政策" class="blog-image">
+                    <div class="blog-content">
+                        <h3 class="blog-title">拜登政府移民政策分析</h3>
+                        <p class="blog-date">2024年1月20日</p>
+                        <p class="blog-excerpt">拜登政府上任一周年后，其移民政策有哪些变化？本文分析当前政策方向及对不同移民群体的影响。</p>
+                        <a href="biden-immigration-policy.html" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+                
+                <!-- 博客文章6 -->
+                <div class="blog-card">
+                    <img src="../images/blog-daca.jpg" alt="DACA计划" class="blog-image">
+                    <div class="blog-content">
+                        <h3 class="blog-title">DACA计划最新动态</h3>
+                        <p class="blog-date">2023年12月15日</p>
+                        <p class="blog-excerpt">童年入境暂缓遣返计划(DACA)近期面临法律挑战。了解最新的法院裁决及其对DACA受益人的影响。</p>
+                        <a href="daca-latest-updates.html" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <a href="#" class="pagination-button active">1</a>
+                <a href="#" class="pagination-button">2</a>
+                <a href="#" class="pagination-button">3</a>
+                <a href="#" class="pagination-button">下一页 &raquo;</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>联系方式</h4>
+                <p>电话：718-880-8820</p>
+                <p>邮箱：jikun.wei@jikunlaw.com</p>
+                <p>地址：43 West 43rd Street, Suite 058, New York, NY 10036</p>
+            </div>
+            <div class="footer-section">
+                <h4>工作时间</h4>
+                <p>周一至周五：9:00 AM - 6:00 PM</p>
+                <p>周六：预约服务</p>
+                <p>周日：休息</p>
+            </div>
+            <div class="footer-section">
+                <h4>微信咨询</h4>
+                <img src="../images/law-firm-wechat.png" alt="律所微信二维码" class="footer-wechat-qr" style="width: 100px; height: auto;">
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 LAW OFFICES OF WEI & ASSOCIATES PLLC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
